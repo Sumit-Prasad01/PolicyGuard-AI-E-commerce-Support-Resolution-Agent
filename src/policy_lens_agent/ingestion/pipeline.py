@@ -1,8 +1,8 @@
 from typing import List
 from langchain_core.documents import Document
 
-from .loader import DocumentLoader
-from .chunker import DocumentChunker
+from src.policy_lens_agent.ingestion.loader import DocumentLoader
+from src.policy_lens_agent.ingestion.chunker import DocumentChunker
 
 from src.policy_lens_agent.utils.logger import logger
 

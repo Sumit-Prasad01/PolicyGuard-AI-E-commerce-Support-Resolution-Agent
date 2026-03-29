@@ -1,5 +1,5 @@
-from policy_lens_agent.ingestion.pipeline import IngestionPipeline
-from policy_lens_agent.vectorstore.faiss_store import FAISSStore
+from src.policy_lens_agent.ingestion.pipeline import IngestionPipeline
+from src.policy_lens_agent.vectorstore.faiss_store import FAISSStore
 from src.policy_lens_agent.utils.logger import logger
 
 

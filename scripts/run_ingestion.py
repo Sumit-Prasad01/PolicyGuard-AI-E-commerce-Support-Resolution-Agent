@@ -1,4 +1,4 @@
-from policy_lens_agent.ingestion.pipeline import IngestionPipeline
+from src.policy_lens_agent.ingestion.pipeline import IngestionPipeline
 from src.policy_lens_agent.utils.logger import logger
 DATA_PATH = "data/raw"
 

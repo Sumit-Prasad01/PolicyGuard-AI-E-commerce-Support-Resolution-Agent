@@ -1,9 +1,9 @@
 import json
 from typing import Dict, Any, List
 
-from policy_lens_agent.vectorstore.retriever import Retriever
-from policy_lens_agent.models.llm import build_chain
-from policy_lens_agent.prompts.templates import SYSTEM_PROMPT, RETRIEVER_PROMPT
+from src.policy_lens_agent.vectorstore.retriever import Retriever
+from src.policy_lens_agent.models.llm import build_chain
+from src.policy_lens_agent.prompts.templates import SYSTEM_PROMPT, RETRIEVER_PROMPT
 
 
 class RetrieverAgent:
@@ -26,7 +26,7 @@ Retrieved Policy Chunks:
 {json.dumps(formatted_docs, indent=2)}
 """
 
-        response = self.chain.invoke({"input": user_input})
+        response = self.chain.invoke({"input": user_input}).strip()
 
         try:
             return json.loads(response)

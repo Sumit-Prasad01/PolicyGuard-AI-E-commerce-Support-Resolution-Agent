@@ -1,8 +1,8 @@
 import json
 from typing import Dict, Any
 
-from policy_lens_agent.models.llm import build_chain
-from policy_lens_agent.prompts.templates import SYSTEM_PROMPT, TRIAGE_PROMPT
+from src.policy_lens_agent.models.llm import build_chain
+from src.policy_lens_agent.prompts.templates import SYSTEM_PROMPT, TRIAGE_PROMPT
 
 
 class TriageAgent:
@@ -21,10 +21,17 @@ Order Context:
 {json.dumps(order_context, indent=2)}
 """
 
-        response = self.chain.invoke({"input": user_input})
+        response = self.chain.invoke({"input": user_input}).strip()
+
+        start = response.find("{")
+        end = response.rfind("}") + 1
 
         try:
+            if start != -1 and end != -1:
+                response = response[start:end]
+
             return json.loads(response)
+
         except Exception:
             return {
                 "classification": "unknown",

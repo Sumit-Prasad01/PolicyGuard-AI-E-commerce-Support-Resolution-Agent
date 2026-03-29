@@ -1,0 +1,69 @@
+[
+  {
+    "input": {
+      "ticket": "I received a damaged phone and want a refund",
+      "order_context": {
+        "order_date": "2026-03-10",
+        "delivery_date": "2026-03-12",
+        "item_category": "electronics",
+        "fulfillment_type": "first-party",
+        "shipping_region": "India",
+        "order_status": "delivered"
+      }
+    },
+    "output": {
+      "stage": "completed",
+      "triage": {
+        "classification": "refund",
+        "confidence": 0.9,
+        "missing_fields": [],
+        "clarifying_questions": []
+      },
+      "resolution": {
+        "decision": "escalate",
+        "rationale": "Damaged phone refund request, return window and item condition need verification",
+        "citations": [
+          {
+            "source": "dataset.pdf",
+            "section": "Document 1: Returns & Refunds \u2014 Electronics"
+          },
+          {
+            "source": "dataset.pdf",
+            "section": "Returns & Refunds policy"
+          }
+        ],
+        "customer_response": "Please provide photos of the damaged phone and its original packaging",
+        "internal_notes": "Verify return window and item condition before processing refund"
+      },
+      "compliance": {
+        "status": "APPROVED"
+      }
+    }
+  },
+  {
+    "input": {
+      "ticket": "My clothes don\u00e2\u20ac\u2122t fit, can I return them after 20 days?",
+      "order_context": {
+        "order_date": "2026-03-01",
+        "delivery_date": "2026-03-02",
+        "item_category": "apparel",
+        "fulfillment_type": "first-party",
+        "shipping_region": "India",
+        "order_status": "delivered"
+      }
+    },
+    "output": {
+      "stage": "clarification_needed",
+      "triage": {
+        "classification": "refund",
+        "confidence": 0.8,
+        "missing_fields": [
+          "return_policy"
+        ],
+        "clarifying_questions": [
+          "What is the return window specified in the return policy for apparel items?"
+        ]
+      }
+    }
+  }
+]

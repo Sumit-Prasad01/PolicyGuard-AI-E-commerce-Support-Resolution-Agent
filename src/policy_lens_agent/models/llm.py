@@ -27,7 +27,7 @@ def build_chain(system_prompt: str, user_prompt: str, temperature: float = 0.2):
 
     prompt = ChatPromptTemplate.from_messages([
         ("system", system_prompt),
-        ("human", user_prompt)
+        ("human", user_prompt + "\n\n{input}")
     ])
 
     chain = prompt | llm | StrOutputParser()

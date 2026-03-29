@@ -16,6 +16,9 @@ class SentenceTransformerEmbeddings:
     def embed_query(self, text: str) -> List[float]:
         logger.info("Embedding user query....")
         return self.model.encode(text).tolist()
+    
+    def __call__(self, text): 
+        return self.embed_query(text)
 
 
 class FAISSStore:

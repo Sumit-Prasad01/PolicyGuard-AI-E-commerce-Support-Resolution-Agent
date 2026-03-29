@@ -27,20 +27,23 @@ Tasks:
    - fraud
    - other
 
-2. Identify missing fields in order context
+2. Identify missing fields ONLY if they are CRITICAL to decision making.
 
-3. Ask max 3 clarifying questions if needed
+3. Ask questions ONLY if decision CANNOT be made without them.
 
-Output STRICT JSON:
+IMPORTANT:
+- If you can reasonably proceed → DO NOT ask questions
+- Prefer proceeding over asking questions
+- Be practical, not overly cautious
 
-{
+Output STRICT JSON ONLY:
+
+{{
   "classification": "...",
   "confidence": 0-1,
   "missing_fields": [],
   "clarifying_questions": []
-}
-
-Do NOT assume missing information.
+}}
 """
 
 # RETRIEVER AGENT
@@ -61,11 +64,11 @@ Rules:
 Output:
 
 [
-  {
+  {{
     "text": "...",
     "source": "...",
     "section": "..."
-  }
+  }}
 ]
 """
 
@@ -79,20 +82,25 @@ STRICT RULES:
 - Do NOT hallucinate
 - Every claim must be backed by citation
 
-Generate STRICT JSON:
+IMPORTANT:
+- Output STRICT JSON ONLY
+- Do NOT include any explanation, text, or markdown
+- Return ONLY valid JSON
 
-{
+Generate:
+
+{{
   "decision": "approve/deny/partial/escalate",
   "rationale": "...",
   "citations": [
-    {
+    {{
       "source": "...",
       "section": "..."
-    }
+    }}
   ],
   "customer_response": "...",
   "internal_notes": "..."
-}
+}}
 
 Tone:
 - Polite
@@ -112,15 +120,15 @@ Check:
 
 If FAIL:
 
-{
+{{
   "status": "REJECTED",
   "reason": "...",
   "fix": "..."
-}
+}}
 
 If PASS:
 
-{
+{{
   "status": "APPROVED"
-}
+}}
 """

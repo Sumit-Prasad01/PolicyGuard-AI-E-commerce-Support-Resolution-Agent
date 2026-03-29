@@ -1,8 +1,8 @@
 import streamlit as st
 import json
 
-from policy_lens_agent.vectorstore.faiss_store import FAISSStore
-from policy_lens_agent.agents.orchestrator import Orchestrator
+from src.policy_lens_agent.vectorstore.faiss_store import FAISSStore
+from src.policy_lens_agent.agents.orchestrator import Orchestrator
 
 st.title("🧠 PolicyLens Support Agent")
 

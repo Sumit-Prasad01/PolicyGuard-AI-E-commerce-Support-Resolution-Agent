@@ -1,18 +1,13 @@
-import json
-
-from policy_lens_agent.vectorstore.faiss_store import FAISSStore
-from policy_lens_agent.agents.orchestrator import Orchestrator
+from src.policy_lens_agent.vectorstore.faiss_store import FAISSStore
+from src.policy_lens_agent.graph.workflow import PolicyGraph
 from src.policy_lens_agent.utils.logger import logger
 
 def main():
-    # Load FAISS index
     store = FAISSStore()
     vectorstore = store.load_index()
 
-    # Initialize orchestrator
-    agent = Orchestrator(vectorstore)
+    graph = PolicyGraph(vectorstore).build()
 
-    # Sample input
     ticket = "My order arrived late and the cookies are melted. I want a full refund and to keep the item."
 
     order_context = {
@@ -25,10 +20,13 @@ def main():
         "payment_method": "prepaid"
     }
 
-    # Run agent
-    result = agent.run(ticket, order_context)
+    result = graph.invoke({
+        "ticket": ticket,
+        "order_context": order_context
+    })
 
     logger.info("\n===== FINAL OUTPUT =====\n")
+    import json
     logger.info(json.dumps(result, indent=2))
 
 
