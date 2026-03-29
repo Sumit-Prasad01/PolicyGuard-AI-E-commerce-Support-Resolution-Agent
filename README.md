@@ -51,7 +51,7 @@ policy-lens-agent/
 
 ### 1. Clone Repository
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/Sumit-Prasad01/PolicyGuard-AI-E-commerce-Support-Resolution-Agent.git
 cd policy-lens-agent
 ```
 
