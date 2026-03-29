@@ -1,0 +1,24 @@
+[
+  {
+    "ticket": "I received a damaged phone and want a refund",
+    "order_context": {
+      "order_date": "2026-03-10",
+      "delivery_date": "2026-03-12",
+      "item_category": "electronics",
+      "fulfillment_type": "first-party",
+      "shipping_region": "India",
+      "order_status": "delivered"
+    }
+  },
+  {
+    "ticket": "My clothes don’t fit, can I return them after 20 days?",
+    "order_context": {
+      "order_date": "2026-03-01",
+      "delivery_date": "2026-03-02",
+      "item_category": "apparel",
+      "fulfillment_type": "first-party",
+      "shipping_region": "India",
+      "order_status": "delivered"
+    }
+  }
+]
